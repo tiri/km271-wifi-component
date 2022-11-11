@@ -1,0 +1,12 @@
+# ide settings
+.vscode
+
+# yamls
+*.yaml
+!*.example.yaml
+
+# build artifacts 
+.esphome
+__pycache__/
+*.py[cod]
+*$py.class
