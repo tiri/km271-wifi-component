@@ -16,7 +16,7 @@ wifi:
   password: !secret wifi_password
 
 status_led:
-  pin: 
+  pin:
     number: GPIO21
     inverted: true
 
@@ -27,4 +27,245 @@ uart:
   baud_rate: 2400
 
 km271_wifi:
-  - uart_id: uart_bus
+  uart_id: uart_bus
+
+sensor:
+  - platform: km271_wifi
+    id: "BW1HK1"
+    param_id: 0x8000
+    name: "Betriebswerte 1 HK1"
+  - platform: km271_wifi
+    id: "BW2HK1"
+    param_id: 0x8001
+    name: "Betriebswerte 2 HK1"
+  - platform: km271_wifi
+    id: "VSTHK1"
+    param_id: 0x8002
+    name: "Vorlaufsolltemperatur HK1"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "VITHK1"
+    param_id: 0x8003
+    name: "Vorlaufisttemperatur HK1"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "RSTHK1"
+    param_id: 0x8004
+    name: "Raumsolltemperatur HK1"
+    unit_of_measurement: "°C"
+    encoding: "halfdegree"
+    accuracy_decimals: 1
+  - platform: km271_wifi
+    id: "RITHK1"
+    param_id: 0x8005
+    name: "Raumisttemperatur HK1"
+    unit_of_measurement: "°C"
+    encoding: "halfdegree"
+    accuracy_decimals: 1
+  - platform: km271_wifi
+    id: "EOZHK1"
+    param_id: 0x8006
+    name: "Einschaltoptimierungszeit HK1"
+  - platform: km271_wifi
+    id: "AOZHK1"
+    param_id: 0x8007
+    name: "Ausschaltoptimierungszeit HK1"
+  - platform: km271_wifi
+    id: "PLHK1"
+    param_id: 0x8008
+    name: "Pumpenleistung HK1"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "MSHK1"
+    param_id: 0x8009
+    name: "Mischerstellung HK1"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KLHK1_P10"
+    param_id: 0x800c
+    name: "Heizkennlinie HK1 bei + 10 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KLHK1_P00"
+    param_id: 0x800d
+    name: "Heizkennlinie HK1 bei 0 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KLHK1_N10"
+    param_id: 0x800e
+    name: "Heizkennlinie HK1 bei - 10 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "BW1HK2"
+    param_id: 0x8112
+    name: "Betriebswerte 1 HK2"
+  - platform: km271_wifi
+    id: "BW2HK2"
+    param_id: 0x8113
+    name: "Betriebswerte 2 HK2"
+  - platform: km271_wifi
+    id: "VSTHK2"
+    param_id: 0x8114
+    name: "Vorlaufsolltemperatur HK2"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "VITHK2"
+    param_id: 0x8115
+    name: "Vorlaufisttemperatur HK2"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "RSTHK2"
+    param_id: 0x8116
+    name: "Raumsolltemperatur HK2"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "RITHK2"
+    param_id: 0x8117
+    name: "Raumisttemperatur HK2"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "EOZHK2"
+    param_id: 0x8118
+    name: "Einschaltoptimierungszeit HK2"
+  - platform: km271_wifi
+    id: "AOZHK2"
+    param_id: 0x8119
+    name: "Ausschaltoptimierungszeit HK2"
+  - platform: km271_wifi
+    id: "PLHK2"
+    param_id: 0x811a
+    name: "Pumpenleistung HK2"
+  - platform: km271_wifi
+    id: "MSHK2"
+    param_id: 0x811b
+    name: "Mischerstellung HK2"
+  - platform: km271_wifi
+    id: "KLHK2_P10"
+    param_id: 0x811e
+    name: "Heizkennlinie HK2 bei + 10 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KLHK2_P00"
+    param_id: 0x811f
+    name: "Heizkennlinie HK2 bei 0 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KLHK2_N10"
+    param_id: 0x8120
+    name: "Heizkennlinie HK2 bei - 10 Grad"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "BW1WW"
+    param_id: 0x8424
+    name: "Betriebswerte 1 WW"
+  - platform: km271_wifi
+    id: "BW2WW"
+    param_id: 0x8425
+    name: "Betriebswerte 2 WW"
+  - platform: km271_wifi
+    id: "WWST"
+    param_id: 0x8426
+    name: "Warmwassersolltemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "WWIT"
+    param_id: 0x8427
+    name: "Warmwasseristtemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "OZWW"
+    param_id: 0x8428
+    name: "Warmwasseroptimierungszeit"
+  - platform: km271_wifi
+    id: "LPWW"
+    param_id: 0x8429
+    name: "Ladepumpe" #   ["aus", "Ladepumpe","Warmwasserpumpe", "beide"]
+  - platform: km271_wifi
+    id: "KVST"
+    param_id: 0x882a
+    name: "Kesselvorlaufsolltemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KVIT"
+    param_id: 0x882b
+    name: "Kesselvorlaufisttemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "BET"
+    param_id: 0x882c
+    name: "Brennereinschalttemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "BAT"
+    param_id: 0x882d
+    name: "Brennerausschalttemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "KFEHL"
+    param_id: 0x8830
+    name: "Kesselfehler"
+  - platform: km271_wifi
+    id: "KBETR"
+    param_id: 0x8831
+    name: "Kesselbetrieb"
+  - platform: km271_wifi
+    id: "BANST"
+    param_id: 0x8832
+    name: "Brenneransteuerung" #  ["aus", "an"]
+  - platform: km271_wifi
+    id: "ABTMP"
+    param_id: 0x8833
+    name: "Abgastemperatur"
+    unit_of_measurement: "°C"
+  - platform: km271_wifi
+    id: "MODBSTELL"
+    param_id: 0x8834
+    name: "modulare Brenner Stellwert"
+  - platform: km271_wifi
+    id: "BLZ1S2"
+    param_id: 0x8836
+    name: "Brennerlaufzeit 1 Stunden 2"
+  - platform: km271_wifi
+    id: "BLZ1S1"
+    param_id: 0x8837
+    name: "Brennerlaufzeit 1 Stunden 1"
+  - platform: km271_wifi
+    id: "BLZ1S0"
+    param_id: 0x8838
+    name: "Brennerlaufzeit 1 Stunden 0"
+  - platform: km271_wifi
+    id: "BLZ2S2"
+    param_id: 0x8839
+    name: "Brennerlaufzeit 2 Stunden 2"
+  - platform: km271_wifi
+    id: "BLZ2S1"
+    param_id: 0x883a
+    name: "Brennerlaufzeit 2 Stunden 1"
+  - platform: km271_wifi
+    id: "BLZ2S0"
+    param_id: 0x883b
+    name: "Brennerlaufzeit 2 Stunden 0"
+  - platform: km271_wifi
+    id: "AT"
+    param_id: 0x893c
+    name: "Aussentemperatur"
+    unit_of_measurement: "°C"
+    encoding: "negative"
+  - platform: km271_wifi
+    id: "ATD"
+    param_id: 0x893d
+    name: "gedaempfte Aussentemperatur"
+    unit_of_measurement: "°C"
+    encoding: "negative"
+  - platform: km271_wifi
+    id: "VVK"
+    param_id: 0x893e
+    name: "Versionsnummer VK"
+  - platform: km271_wifi
+    id: "VNK"
+    param_id: 0x893f
+    name: "Versionsnummer NK"
+  - platform: km271_wifi
+    id: "MODKENN"
+    param_id: 0x8940
+    name: "Modulkennung"
