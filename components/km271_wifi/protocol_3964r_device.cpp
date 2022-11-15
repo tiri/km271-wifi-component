@@ -2,8 +2,6 @@
 
 #include <esphome/core/log.h>
 
-#include <vector>
-
 namespace esphome {
 namespace KM271 {
 
@@ -113,8 +111,7 @@ void P3964RDevice::handle_rx_(char c) {
         // ESP_LOGI(TAG, "Checksum match, sending ACK = DLE");
         write_byte(DLE);
         //  parse the data
-        const std::vector<char> telegram(rxBuffer, rxBuffer + rxLen - 3);
-        recv_telegram_(telegram);
+        recv_telegram_(rxBuffer, rxLen - 3);
       } else {
         ESP_LOGE(TAG, "Checksum mismatch, sending NAK");
         write_byte(NAK);
@@ -133,6 +130,6 @@ void P3964RDevice::handle_rx_(char c) {
   lastChar = c;
 }
 
-void P3964RDevice::send_telegram_(std::vector<char> telegram) {}
+void P3964RDevice::send_telegram_(const char* data, size_t data_len) {}
 }  // namespace KM271
 }  // namespace esphome

@@ -53,14 +53,14 @@ sensor:
     param_id: 0x8004
     name: "Raumsolltemperatur HK1"
     unit_of_measurement: "°C"
-    encoding: "halfdegree"
+    decoding: "halfdegree"
     accuracy_decimals: 1
   - platform: km271_wifi
     id: "RITHK1"
     param_id: 0x8005
     name: "Raumisttemperatur HK1"
     unit_of_measurement: "°C"
-    encoding: "halfdegree"
+    decoding: "halfdegree"
     accuracy_decimals: 1
   - platform: km271_wifi
     id: "EOZHK1"
@@ -250,13 +250,13 @@ sensor:
     param_id: 0x893c
     name: "Aussentemperatur"
     unit_of_measurement: "°C"
-    encoding: "negative"
+    decoding: "negative"
   - platform: km271_wifi
     id: "ATD"
     param_id: 0x893d
     name: "gedaempfte Aussentemperatur"
     unit_of_measurement: "°C"
-    encoding: "negative"
+    decoding: "negative"
   - platform: km271_wifi
     id: "VVK"
     param_id: 0x893e

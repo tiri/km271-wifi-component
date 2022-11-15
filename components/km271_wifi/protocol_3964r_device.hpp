@@ -3,8 +3,6 @@
 #include <esphome/components/uart/uart.h>
 #include <esphome/core/component.h>
 
-#include <vector>
-
 namespace esphome {
 namespace KM271 {
 
@@ -14,8 +12,8 @@ class P3964RDevice : public Component, public uart::UARTDevice {
   float get_setup_priority() const override;
 
  protected:
-  virtual void recv_telegram_(const std::vector<char> telegram) = 0;
-  void send_telegram_(std::vector<char> telegram);
+  virtual void recv_telegram_(const char *data, size_t data_len) = 0;
+  void send_telegram_(const char *data, size_t data_len);
 
  private:
   void handle_rx_(char in);

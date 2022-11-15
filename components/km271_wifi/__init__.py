@@ -12,7 +12,7 @@ KM271Component = km271_ns.class_("KM271Component", cg.Component, uart.UARTDevice
 
 CONF_PARAM_ID = "param_id"
 CONF_KM271_ID = "km271_id"
-CONF_SENSOR_ENCODING = "encoding"
+CONF_SENSOR_DECODING = "decoding"
 
 CONFIG_SCHEMA = (
     cv.Schema(

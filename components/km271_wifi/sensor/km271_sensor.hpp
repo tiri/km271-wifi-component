@@ -3,20 +3,21 @@
 #include <esphome/components/sensor/sensor.h>
 
 #include "../km271_wifi.hpp"
+#include "../buderus_parser.hpp"
 
 namespace esphome {
 namespace KM271 {
 
-enum class SensorEncodingOption { NONE, HALFDEGREE, NEGATIVE };
+enum class SensorDecodingOption { NONE, HALFDEGREE, NEGATIVE };
 
 class KM271Sensor : public KM271Listener, public sensor::Sensor, public Component {
  public:
   KM271Sensor(uint16_t param_id);
-  KM271Sensor(uint16_t param_id, SensorEncodingOption encoding_option);
-  void publish_val(const char *buf, size_t len) override;
+  KM271Sensor(uint16_t param_id, SensorDecodingOption decoding_option);
+  void publish_val(BuderusTelegram telegram) override;
 
  private:
-  SensorEncodingOption encoding_option_;
+  SensorDecodingOption decoding_option_;
 };
 
 }  // namespace KM271

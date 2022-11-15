@@ -1,8 +1,7 @@
 #pragma once
 
-#include <vector>
-
 #include "protocol_3964r_device.hpp"
+#include "buderus_parser.hpp"
 
 namespace esphome {
 namespace KM271 {
@@ -11,7 +10,7 @@ class KM271Listener {
  public:
   uint16_t id;
   KM271Listener(uint16_t id);
-  virtual void publish_val(const char *buf, std::size_t len) = 0;
+  virtual void publish_val(BuderusTelegram telegram) = 0;
 };
 
 class KM271Component : public P3964RDevice {
@@ -20,7 +19,7 @@ class KM271Component : public P3964RDevice {
 
  private:
   std::vector<KM271Listener *> listeners_{};
-  void recv_telegram_(std::vector<char> telegram) override;
+  void recv_telegram_(const char *data, size_t data_len) override;
 };
 
 }  // namespace KM271
