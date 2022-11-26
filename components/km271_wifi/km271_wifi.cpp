@@ -13,7 +13,7 @@ KM271Listener::KM271Listener(uint16_t id) : id{id} {}
 
 void KM271Component::register_listener(KM271Listener *listener) { listeners_.emplace_back(listener); }
 
-void KM271Component::recv_telegram_(const char *data, size_t data_len) {
+void KM271Component::recv_telegram_(uint8_t *data, size_t data_len) {
   if (data_len < 2) {
     ESP_LOGE(TAG, "Invalid data length.");
     return;
@@ -29,6 +29,11 @@ void KM271Component::recv_telegram_(const char *data, size_t data_len) {
     listener->publish_val(telegram);
   }
 }
+
+void KM271Component::setup() {
+  uint8_t logCommand[] = {0xEE, 0x00, 0x00};
+  send_telegram_(logCommand, 3);
+};
 
 }  // namespace KM271
 }  // namespace esphome

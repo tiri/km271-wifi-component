@@ -6,7 +6,7 @@
 namespace esphome {
 namespace KM271 {
 
-static std::string to_hex(const char *buffer, size_t len) {
+static std::string to_hex(uint8_t *buffer, size_t len) {
   std::ostringstream oss{};
 
   for (int i = 0; i < len; i++) {

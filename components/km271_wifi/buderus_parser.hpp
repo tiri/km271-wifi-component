@@ -5,13 +5,13 @@ namespace KM271 {
 
 struct BuderusTelegram {
   uint16_t id;
-  const char *data;
+  uint8_t *data;
   size_t data_len;
 };
 
 class BuderusParser {
  public:
-  static BuderusTelegram encode(const char *buffer, size_t buffer_len) {
+  static BuderusTelegram encode(uint8_t *buffer, size_t buffer_len) {
     if (buffer_len < 3)
       return BuderusTelegram{};
     return BuderusTelegram{static_cast<uint16_t>((buffer[0] << 8) | buffer[1]), buffer + 2, buffer_len - 2};
