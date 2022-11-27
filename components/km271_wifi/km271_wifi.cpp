@@ -31,8 +31,8 @@ void KM271Component::recv_telegram_(uint8_t *data, size_t data_len) {
 }
 
 void KM271Component::setup() {
-  uint8_t logCommand[] = {0xEE, 0x00, 0x00};
-  send_telegram_(logCommand, 3);
+  uint8_t log_command[] = {0xEE, 0x00, 0x00};
+  send_telegram_(log_command, 3);
 };
 
 }  // namespace KM271

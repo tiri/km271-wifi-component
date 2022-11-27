@@ -7,7 +7,7 @@ from .. import KM271Component, CONF_PARAM_ID, CONF_KM271_ID, CONF_SENSOR_DECODIN
 
 AUTOLOAD = ["km271_wifi"]
 
-KM271Sensor = km271_ns.class_("KM271Sensor", sensor.Sensor, cg.Component)
+KM271Sensor = km271_ns.class_("KM271Sensor", sensor.Sensor)
 
 SensorDecodingOption = km271_ns.enum("SensorDecodingOption")
 DECODING_OPTIONS = {
@@ -27,7 +27,6 @@ CONFIG_SCHEMA = sensor.sensor_schema().extend(
 
 async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID], config[CONF_PARAM_ID])
-    await cg.register_component(var, config)
     await sensor.register_sensor(var, config)
     km271 = await cg.get_variable(config[CONF_KM271_ID])
     cg.add(km271.register_listener(var))

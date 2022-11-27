@@ -10,7 +10,7 @@ namespace KM271 {
 
 enum class SensorDecodingOption { NONE, HALFDEGREE, NEGATIVE };
 
-class KM271Sensor : public KM271Listener, public sensor::Sensor, public Component {
+class KM271Sensor : public KM271Listener, public sensor::Sensor {
  public:
   KM271Sensor(uint16_t param_id);
   KM271Sensor(uint16_t param_id, SensorDecodingOption decoding_option);
