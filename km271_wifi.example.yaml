@@ -74,7 +74,7 @@ sensor:
     id: "PLHK1"
     param_id: 0x8008
     name: "Pumpenleistung HK1"
-    unit_of_measurement: "°C"
+    unit_of_measurement: "%"
   - platform: km271_wifi
     id: "MSHK1"
     param_id: 0x8009
@@ -209,10 +209,6 @@ sensor:
     param_id: 0x8831
     name: "Kesselbetrieb"
   - platform: km271_wifi
-    id: "BANST"
-    param_id: 0x8832
-    name: "Brenneransteuerung" #  ["aus", "an"]
-  - platform: km271_wifi
     id: "ABTMP"
     param_id: 0x8833
     name: "Abgastemperatur"
@@ -269,3 +265,9 @@ sensor:
     id: "MODKENN"
     param_id: 0x8940
     name: "Modulkennung"
+
+binary_sensor:
+  - platform: km271_wifi
+    id: "BANST"
+    param_id: 0x8832
+    name: "Brenneransteuerung" #  ["aus", "an"]
