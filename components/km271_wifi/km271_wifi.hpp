@@ -20,7 +20,7 @@ class KM271Component : public P3964RDevice {
 
  private:
   std::vector<KM271Listener *> listeners_{};
-  void recv_telegram_(uint8_t *data, size_t data_len) override;
+  void recv_telegram(uint8_t *data, size_t data_len) override;
 };
 
 }  // namespace KM271

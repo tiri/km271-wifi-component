@@ -18,7 +18,13 @@ static const uint32_t ZVZ = 220;   // Zeichenverzugszeit: Time-out between data 
 
 static const uint8_t MAX_TELEGRAM_RETRIES = 5;  // stop if no ack after this amount of tries
 
-enum ParserState { WaitingForStart, WaitingForETX, WaitingForChecksum, TelegramComplete, ParseError };
+enum ParserState { 
+  WAITING_FOR_START,
+  WAITING_FOR_ETX,
+  WAITING_FOR_CHECKSUM,
+  TELEGRAM_COMPLETE,
+  PARSE_ERROR
+};
 
 class Parser3964R {
  public:
@@ -29,7 +35,6 @@ class Parser3964R {
   void consume_byte(uint8_t byte);
   bool parsing_in_progress();
 
- public:
   uint8_t telegram[MAX_TELEGRAM_SIZE];
   ParserState state;
   uint16_t current_telegram_length;
@@ -39,7 +44,16 @@ class Parser3964R {
   uint8_t current_checksum_;
 };
 
-enum WriterState { Idle, RequestPending, WaitingForDLE, Sending, SendingDLE, SendingETX, SendingChecksum, WaitForACK };
+enum WriterState {
+  IDLE,
+  REQUEST_PENDING,
+  WAITING_FOR_DLE,
+  SENDING,
+  SENDING_DLE,
+  SENDING_ETX,
+  SENDING_CHECKSUM,
+  WAIT_FOR_ACK
+};
 
 class Writer3964R {
  public:
@@ -51,7 +65,6 @@ class Writer3964R {
   bool has_byte_to_send();
   void restart_telegram();
 
- public:
   WriterState writer_state;
   uint8_t retry_count;
 
@@ -69,8 +82,8 @@ class P3964RDevice : public Component, public uart::UARTDevice {
   float get_setup_priority() const override;
 
  protected:
-  virtual void recv_telegram_(uint8_t *data, size_t data_len) = 0;
-  void send_telegram_(uint8_t *data, size_t data_len);
+  virtual void recv_telegram(uint8_t *data, size_t data_len) = 0;
+  void send_telegram(uint8_t *data, size_t data_len);
 
  private:
   Parser3964R parser_;

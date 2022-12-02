@@ -25,7 +25,8 @@ void KM271Sensor::publish_val(const BuderusTelegram telegram) {
       } else {
         publish_state((float) data);
       }
-
+      break;
+      
     default:
       publish_state(data);
       break;
