@@ -1,0 +1,39 @@
+name: build KM271 component
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+        image: "esphome/esphome:${{ matrix.version }}"
+    strategy:
+      fail-fast: false
+      matrix:
+        version:
+          - stable
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          submodules: 'recursive'
+      - name: Cache pio folder
+        id: cache-pio
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.platformio/.cache
+          key: pio
+      - name: Generate secrets
+        run: |
+          touch secrets.yaml
+          echo wifi_ssid: test_wifi_ssid >> secrets.yaml
+          echo wifi_password: test_wifi_password >> secrets.yaml
+          echo ota_password: test_ota_password >> secrets.yaml
+          echo wifi_ap_password: test_wifi_ap_password >> secrets.yaml
+      - name: Build component
+        run: esphome compile km271_wifi.example.yaml
